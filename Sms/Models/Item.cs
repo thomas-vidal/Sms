@@ -13,7 +13,7 @@ namespace Sms.Models
         private string term;
         private string word;
 
-        [XmlAttribute()]
+        [XmlElement()]
         public string Term
         {
             get
@@ -27,7 +27,7 @@ namespace Sms.Models
             }
         }
 
-        [XmlAttribute()]
+        [XmlElement()]
         public string Word
         {
             get

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,27 +9,16 @@ using System.Xml.Serialization;
 
 namespace Sms.Models
 {
-    public class Dictionary
-    {
+    public class Dictionary : BindingList<Item>
+    { 
 
-        private List<Item> items;
-
-        public Dictionary()
+        public void Save()
         {
-            items = new List<Item>();
-        }
+            XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
 
-        [XmlArray("Dictionary"), XmlArrayItem(typeof(Item), ElementName = "Item")]
-        public List<Item> Items
-        {
-            get
+            using (StreamWriter streamWriter = System.IO.File.CreateText(@"C:\Users\Thomas vidal\Desktop\test\french.dico"))
             {
-                return items;
-            }
-
-            set
-            {
-                items = value;
+                xmlSerializer.Serialize(streamWriter, this);
             }
         }
     }

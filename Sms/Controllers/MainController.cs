@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sms.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace Sms.Controllers
         {
             MainController Controller { get; set; }
 
-            Dictionary<string, string> Dico { get; set; }
+            Models.Dictionary Dico { get; set; }
 
             void Show();
             void Hide();
@@ -32,11 +34,13 @@ namespace Sms.Controllers
 
         public override void HandleNavigation(object args)
         {
-            Window.Dico = new Dictionary<string, string>
-            {
-                {"slt", "salut"},
-                {"cv", "ca va"}
-            };
+            Window.Dico = new Models.Dictionary();
+
+            Window.Dico.Add(new Item { Term = "slt", Word = "Salut" });
+            Window.Dico.Add(new Item { Term = "cv", Word = "ca va" });
+
+
+            Window.Dico.Save();
         }
     }
 }

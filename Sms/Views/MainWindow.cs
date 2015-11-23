@@ -26,15 +26,15 @@ namespace Sms.Views
 
         public MainController Controller { get; set; }
 
-        public Dictionary<string,string> Dico
+        public Dictionary Dico
         {
             get
             {
-                return null;   
+                return dictionaryBindingSource.DataSource as Models.Dictionary;   
             }
             set
             {
-                dictionaryBindingSource.DataSource = value;
+                dictionaryBindingSource.DataSource = value;                  ;
             }
         }
     }
