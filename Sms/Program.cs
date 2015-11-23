@@ -23,6 +23,7 @@ namespace Sms
         {
             Views.MainWindow mainWindow = new Views.MainWindow();
             Controllers.MainController mainController = new Controllers.MainController { Window = mainWindow };
+            mainController.HandleNavigation(null);
 
             return mainWindow;
         }
