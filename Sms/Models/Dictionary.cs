@@ -16,10 +16,18 @@ namespace Sms.Models
         {
             XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
 
-            using (StreamWriter streamWriter = System.IO.File.CreateText(@"C:\Users\Thomas vidal\Desktop\test\french.dico"))
+            using (StreamWriter streamWriter = System.IO.File.CreateText(@"C:\Users\Thomas vidal\Desktop\dico.dico"))
             {
                 xmlSerializer.Serialize(streamWriter, this);
             }
         }
+
+        public void Save(Stream stream)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+
+            xmlSerializer.Serialize(stream, this);
+        }
+
     }
 }
