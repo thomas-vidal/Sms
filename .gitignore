@@ -44,3 +44,5 @@ Temporary Items
 
 bin/
 obj/
+.vs/
+.vs/Sms/v14/.suo
