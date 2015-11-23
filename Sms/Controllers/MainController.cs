@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Sms.Controllers
@@ -53,6 +54,7 @@ namespace Sms.Controllers
             Stream stream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
+            saveFileDialog.InitialDirectory = @"C:\Users\Thomas vidal\Desktop\";
             saveFileDialog.Filter = "dico files (*.dico)|*.dico";
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
@@ -80,7 +82,7 @@ namespace Sms.Controllers
             Stream stream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.InitialDirectory = @"C:\Users\Thomas vidal\Desktop\";
             openFileDialog.Filter = "dico files (*.dico)|*.dico";
             openFileDialog.FilterIndex = 2;
             openFileDialog.RestoreDirectory = true;
@@ -94,6 +96,8 @@ namespace Sms.Controllers
                         using (stream)
                         {
                             XmlSerializer serializer = new XmlSerializer(typeof(Models.Item));
+
+                            XmlReader reader = XmlReader.Create(stream);
 
                             Window.Dico = (Dictionary)serializer.Deserialize(stream);
                         }
