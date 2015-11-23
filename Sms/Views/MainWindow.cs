@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sms.Controllers;
 
-namespace Sms
+namespace Sms.Views
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
+    public partial class MainWindow : Form, Controllers.MainController.IWindow    {
+        public MainWindow()
         {
             InitializeComponent();
         }
+
+        public MainController Controller { get; set; }
+
     }
 }

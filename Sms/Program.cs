@@ -16,7 +16,15 @@ namespace Sms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(Setup());
+        }
+
+        private static Form Setup()
+        {
+            Views.MainWindow mainWindow = new Views.MainWindow();
+            Controllers.MainController mainController = new Controllers.MainController { Window = mainWindow };
+
+            return mainWindow;
         }
     }
 }
