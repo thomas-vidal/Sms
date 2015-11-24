@@ -14,6 +14,7 @@ namespace Sms.Controllers
 {
     public class MainController : Controller
     {
+        /* Interface */
         public interface IWindow
         {
             MainController Controller { get; set; }
@@ -24,8 +25,12 @@ namespace Sms.Controllers
             void Hide();
         }
 
+        /* variables */
         private IWindow window;
 
+        private string curentPath;
+
+        /* Prop */
         public IWindow Window
         {
             get { return window; }
@@ -36,47 +41,48 @@ namespace Sms.Controllers
             }
         }
 
+        public string CurentPath
+        {
+            get
+            {
+                return curentPath;
+            }
+
+            set
+            {
+                curentPath = value;
+            }
+        }
+
+        /* Ctor */
         public override void HandleNavigation(object args)
         {
             Window.Dico = new Models.Dictionary();
-
-            Window.Dico.Add(new Item { Term = "slt", Word = "Salut" });
-            Window.Dico.Add(new Item { Term = "cv", Word = "ca va" });
         }
 
+        /* Manage: Dictionary */
         public void SaveDictionary()
         {
-            Window.Dico.Save();
+            if (CurentPath != null)
+            {
+                Window.Dico.Save(CurentPath);
+            }
+            else
+            {
+                SaveAsDictionary();
+            }
         }
 
         public void SaveAsDictionary()
         {
-            Stream stream;
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            saveFileDialog.InitialDirectory = @"C:\Users\Thomas vidal\Desktop\";
-            saveFileDialog.Filter = "dico files (*.dico)|*.dico";
-            saveFileDialog.FilterIndex = 2;
-            saveFileDialog.RestoreDirectory = true;
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                if ((stream = saveFileDialog.OpenFile()) != null)
-                {
-
-                    Window.Dico.Save(stream);
-
-                    stream.Close();
-                }
-            }
+            Window.Dico.SaveAsDictionary();
         }
 
         public void NewDico()
         {
-            Window.Dico = new Dictionary();
+            Window.Dico.Clear();
         }
 
-        //TODO : Open File
         public void OpenFile()
         {
             Stream stream = null;
@@ -95,9 +101,8 @@ namespace Sms.Controllers
                     {
                         using (stream)
                         {
-                            XmlSerializer serializer = new XmlSerializer(typeof(Models.Item));
-
-                            XmlReader reader = XmlReader.Create(stream);
+                            CurentPath = openFileDialog.FileName;
+                            XmlSerializer serializer = new XmlSerializer(typeof(Dictionary));
 
                             Window.Dico = (Dictionary)serializer.Deserialize(stream);
                         }
