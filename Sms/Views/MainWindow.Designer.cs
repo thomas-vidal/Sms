@@ -42,7 +42,10 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UserTextBox = new System.Windows.Forms.RichTextBox();
+            this.TranslatedTextBox = new System.Windows.Forms.RichTextBox();
             this.TableLayoutPanelHorizontal.SuspendLayout();
+            this.TableLayoutPanelVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DictionaryDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +74,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TableLayoutPanelVertical.ColumnCount = 1;
             this.TableLayoutPanelVertical.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelVertical.Controls.Add(this.UserTextBox, 0, 0);
+            this.TableLayoutPanelVertical.Controls.Add(this.TranslatedTextBox, 0, 1);
             this.TableLayoutPanelVertical.Location = new System.Drawing.Point(3, 3);
             this.TableLayoutPanelVertical.Name = "TableLayoutPanelVertical";
             this.TableLayoutPanelVertical.RowCount = 2;
@@ -178,6 +183,25 @@
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // UserTextBox
+            // 
+            this.UserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserTextBox.Location = new System.Drawing.Point(3, 3);
+            this.UserTextBox.Name = "UserTextBox";
+            this.UserTextBox.Size = new System.Drawing.Size(645, 233);
+            this.UserTextBox.TabIndex = 0;
+            this.UserTextBox.Text = "";
+            // 
+            // TranslatedTextBox
+            // 
+            this.TranslatedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TranslatedTextBox.Enabled = false;
+            this.TranslatedTextBox.Location = new System.Drawing.Point(3, 242);
+            this.TranslatedTextBox.Name = "TranslatedTextBox";
+            this.TranslatedTextBox.Size = new System.Drawing.Size(645, 234);
+            this.TranslatedTextBox.TabIndex = 1;
+            this.TranslatedTextBox.Text = "";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +213,7 @@
             this.Name = "MainWindow";
             this.Text = "Sms";
             this.TableLayoutPanelHorizontal.ResumeLayout(false);
+            this.TableLayoutPanelVertical.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DictionaryDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -211,5 +236,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.RichTextBox UserTextBox;
+        private System.Windows.Forms.RichTextBox TranslatedTextBox;
     }
 }
