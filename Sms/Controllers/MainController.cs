@@ -64,7 +64,7 @@ namespace Sms.Controllers
         }
 
         /* Parsor */
-        public void Parse()
+        public void RefreshParse()
         {
             Window.TranslatedText = Window.Dico.Parse(Window.UserText);
         }
@@ -90,6 +90,7 @@ namespace Sms.Controllers
         public void NewDico()
         {
             Window.Dico.Clear();
+            RefreshParse();
         }
 
         public void OpenFile()
@@ -114,6 +115,8 @@ namespace Sms.Controllers
                             XmlSerializer serializer = new XmlSerializer(typeof(Dictionary));
 
                             Window.Dico = (Dictionary)serializer.Deserialize(stream);
+
+                            RefreshParse();
                         }
                     }
                 }

@@ -21,12 +21,14 @@ namespace Sms.Models
 
             foreach (Item item in this)
             {
-                if (result.Contains(item.Term))
+                if (item.Word != null && item.Term != null)
                 {
-                    result = result.Replace(item.Term, item.Word);
+                    if (result.Contains(item.Term))
+                    {
+                        result = result.Replace(item.Term, item.Word);
+                    }
                 }
             }
-
             return result;
         }
 

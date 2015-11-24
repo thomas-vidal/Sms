@@ -92,7 +92,12 @@ namespace Sms.Views
 
         private void UserTextBox_TextChanged(object sender, EventArgs e)
         {
-            Controller.Parse();
+            Controller.RefreshParse();
+        }
+
+        private void DictionaryDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            Controller.RefreshParse();
         }
     }
 }

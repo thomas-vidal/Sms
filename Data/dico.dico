@@ -28,4 +28,8 @@
     <Term>gg</Term>
     <Word>good game</Word>
   </Item>
+  <Item>
+    <Term>test</Term>
+    <Word>testation</Word>
+  </Item>
 </Dictionary>
