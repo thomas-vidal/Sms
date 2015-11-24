@@ -14,8 +14,10 @@ namespace Sms.Views
 {
     public partial class MainWindow : Form, Controllers.MainController.IWindow {
 
+        /* Var */
         public BindingSource dictionaryBindingSource;
 
+        /* Ctor */
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Sms.Views
             DictionaryDataGridView.DataSource = dictionaryBindingSource;
         }
 
+        /* Prop */
         public MainController Controller { get; set; }
 
         public Dictionary Dico
@@ -38,6 +41,30 @@ namespace Sms.Views
             }
         }
 
+        public string UserText {
+            get
+            {
+                return UserTextBox.Text;
+            }
+            set
+            {
+                UserTextBox.Text = value;
+            }
+        }
+
+        public string TranslatedText
+        {
+            get
+            {
+                return TranslatedTextBox.Text;
+            }
+            set
+            {
+                TranslatedTextBox.Text = value;
+            }
+        }
+
+        /* Event */
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -61,6 +88,11 @@ namespace Sms.Views
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Controller.NewDico();
+        }
+
+        private void UserTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Controller.Parse();
         }
     }
 }

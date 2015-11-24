@@ -21,14 +21,23 @@ namespace Sms.Controllers
 
             Models.Dictionary Dico { get; set; }
 
+            string UserText { get; set; }
+            string TranslatedText { get; set; }
+
             void Show();
             void Hide();
         }
 
-        /* variables */
+        /* Var */
         private IWindow window;
 
         private string curentPath;
+
+        /* Ctor */
+        public override void HandleNavigation(object args)
+        {
+            Window.Dico = new Models.Dictionary();
+        }
 
         /* Prop */
         public IWindow Window
@@ -54,10 +63,10 @@ namespace Sms.Controllers
             }
         }
 
-        /* Ctor */
-        public override void HandleNavigation(object args)
+        /* Parsor */
+        public void Parse()
         {
-            Window.Dico = new Models.Dictionary();
+            Window.TranslatedText = Window.Dico.Parse(Window.UserText);
         }
 
         /* Manage: Dictionary */
@@ -114,5 +123,6 @@ namespace Sms.Controllers
                 }
             }
         }
+
     }
 }

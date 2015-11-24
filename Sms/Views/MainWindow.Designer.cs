@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.TableLayoutPanelHorizontal = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelVertical = new System.Windows.Forms.TableLayoutPanel();
+            this.UserTextBox = new System.Windows.Forms.RichTextBox();
+            this.TranslatedTextBox = new System.Windows.Forms.RichTextBox();
             this.DictionaryDataGridView = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +44,6 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UserTextBox = new System.Windows.Forms.RichTextBox();
-            this.TranslatedTextBox = new System.Windows.Forms.RichTextBox();
             this.TableLayoutPanelHorizontal.SuspendLayout();
             this.TableLayoutPanelVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DictionaryDataGridView)).BeginInit();
@@ -84,18 +84,40 @@
             this.TableLayoutPanelVertical.Size = new System.Drawing.Size(651, 479);
             this.TableLayoutPanelVertical.TabIndex = 0;
             // 
+            // UserTextBox
+            // 
+            this.UserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserTextBox.Location = new System.Drawing.Point(3, 3);
+            this.UserTextBox.Name = "UserTextBox";
+            this.UserTextBox.Size = new System.Drawing.Size(645, 233);
+            this.UserTextBox.TabIndex = 0;
+            this.UserTextBox.Text = "";
+            this.UserTextBox.TextChanged += new System.EventHandler(this.UserTextBox_TextChanged);
+            // 
+            // TranslatedTextBox
+            // 
+            this.TranslatedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TranslatedTextBox.Enabled = false;
+            this.TranslatedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TranslatedTextBox.Location = new System.Drawing.Point(3, 242);
+            this.TranslatedTextBox.Name = "TranslatedTextBox";
+            this.TranslatedTextBox.Size = new System.Drawing.Size(645, 234);
+            this.TranslatedTextBox.TabIndex = 1;
+            this.TranslatedTextBox.Text = "";
+            // 
             // DictionaryDataGridView
             // 
             this.DictionaryDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DictionaryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DictionaryDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DictionaryDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.DictionaryDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DictionaryDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DictionaryDataGridView.Location = new System.Drawing.Point(660, 3);
@@ -135,7 +157,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -145,14 +167,14 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -160,47 +182,28 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.saveAsToolStripMenuItem.Text = "Save &As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // UserTextBox
-            // 
-            this.UserTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserTextBox.Location = new System.Drawing.Point(3, 3);
-            this.UserTextBox.Name = "UserTextBox";
-            this.UserTextBox.Size = new System.Drawing.Size(645, 233);
-            this.UserTextBox.TabIndex = 0;
-            this.UserTextBox.Text = "";
-            // 
-            // TranslatedTextBox
-            // 
-            this.TranslatedTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TranslatedTextBox.Enabled = false;
-            this.TranslatedTextBox.Location = new System.Drawing.Point(3, 242);
-            this.TranslatedTextBox.Name = "TranslatedTextBox";
-            this.TranslatedTextBox.Size = new System.Drawing.Size(645, 234);
-            this.TranslatedTextBox.TabIndex = 1;
-            this.TranslatedTextBox.Text = "";
             // 
             // MainWindow
             // 

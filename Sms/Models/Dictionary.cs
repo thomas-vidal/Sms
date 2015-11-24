@@ -15,6 +15,21 @@ namespace Sms.Models
     public class Dictionary : BindingList<Item>
     { 
 
+        public string Parse(string text)
+        {
+            string result = text;
+
+            foreach (Item item in this)
+            {
+                if (result.Contains(item.Term))
+                {
+                    result = result.Replace(item.Term, item.Word);
+                }
+            }
+
+            return result;
+        }
+
         public void Save(string path)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());

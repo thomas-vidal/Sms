@@ -9,19 +9,23 @@
     <Word>ca va</Word>
   </Item>
   <Item>
-    <Term>t</Term>
-    <Word>test</Word>
+    <Term>cmb</Term>
+    <Word>combien</Word>
   </Item>
   <Item>
     <Term>bjr</Term>
     <Word>bonjour</Word>
   </Item>
   <Item>
-    <Term>o</Term>
-    <Word>object</Word>
+    <Term>isis</Term>
+    <Word>Idiots Stupid, Idiots Stupid</Word>
   </Item>
   <Item>
     <Term>min</Term>
     <Word>minimum</Word>
+  </Item>
+  <Item>
+    <Term>gg</Term>
+    <Word>good game</Word>
   </Item>
 </Dictionary>
