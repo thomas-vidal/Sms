@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Dictionary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Item>
+    <Term>slt</Term>
+    <Word>Salut</Word>
+  </Item>
+  <Item>
+    <Term>cv</Term>
+    <Word>ca va</Word>
+  </Item>
+  <Item>
+    <Term>t</Term>
+    <Word>test</Word>
+  </Item>
+  <Item>
+    <Term>bjr</Term>
+    <Word>bonjour</Word>
+  </Item>
+  <Item>
+    <Term>o</Term>
+    <Word>object</Word>
+  </Item>
+  <Item>
+    <Term>min</Term>
+    <Word>minimum</Word>
+  </Item>
+</Dictionary>
