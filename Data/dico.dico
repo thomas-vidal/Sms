@@ -17,8 +17,8 @@
     <Word>bonjour</Word>
   </Item>
   <Item>
-    <Term>isis</Term>
-    <Word>Idiots Stupid, Idiots Stupid</Word>
+    <Term>glhf</Term>
+    <Word>good luck have fun</Word>
   </Item>
   <Item>
     <Term>min</Term>
@@ -31,5 +31,9 @@
   <Item>
     <Term>test</Term>
     <Word>testation</Word>
+  </Item>
+  <Item>
+    <Term>i </Term>
+    <Word>idoit </Word>
   </Item>
 </Dictionary>
