@@ -17,6 +17,14 @@ namespace Sms.Controllers
         /* Interface */
         public interface IWindow
         {
+            event EventHandler userTextChanged;
+            event EventHandler dictionaryChanged;
+            event EventHandler newDictionary;
+            event EventHandler openDictionary;
+            event EventHandler saveDictionary;
+            event EventHandler saveAsDictionary;
+            event EventHandler exitApplication;
+
             MainController Controller { get; set; }
 
             Models.Dictionary Dico { get; set; }
@@ -37,6 +45,14 @@ namespace Sms.Controllers
         public override void HandleNavigation(object args)
         {
             Window.Dico = new Models.Dictionary();
+
+            Window.dictionaryChanged += OnDictionaryChanged;
+            Window.userTextChanged += OnUserTextChanged;
+            Window.newDictionary += OnNewDictionary;
+            Window.openDictionary += OnOpenDictionary;
+            Window.saveAsDictionary += OnSaveAsDictionary;
+            Window.saveDictionary += OnSaveDictionary;
+            Window.exitApplication += OnExitApplication;
         }
 
         /* Prop */
@@ -69,8 +85,23 @@ namespace Sms.Controllers
             Window.TranslatedText = Window.Dico.Parse(Window.UserText);
         }
 
-        /* Manage: Dictionary */
-        public void SaveDictionary()
+        /* Event */
+        private void OnDictionaryChanged(object sender, EventArgs e)
+        {
+            RefreshParse();
+        }
+
+        private void OnUserTextChanged(object sender, EventArgs e)
+        {
+            RefreshParse();
+        }
+
+        private void OnExitApplication(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void OnSaveDictionary(object sender, EventArgs e)
         {
             if (CurentPath != null)
             {
@@ -78,22 +109,16 @@ namespace Sms.Controllers
             }
             else
             {
-                SaveAsDictionary();
+                Window.Dico.SaveAsDictionary();
             }
         }
 
-        public void SaveAsDictionary()
+        private void OnSaveAsDictionary(object sender, EventArgs e)
         {
             Window.Dico.SaveAsDictionary();
         }
 
-        public void NewDico()
-        {
-            Window.Dico.Clear();
-            RefreshParse();
-        }
-
-        public void OpenFile()
+        private void OnOpenDictionary(object sender, EventArgs e)
         {
             Stream stream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -127,5 +152,10 @@ namespace Sms.Controllers
             }
         }
 
+        private void OnNewDictionary(object sender, EventArgs e)
+        {
+            Window.Dico.Clear();
+            RefreshParse();
+        }
     }
 }

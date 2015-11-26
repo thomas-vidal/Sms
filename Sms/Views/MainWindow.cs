@@ -12,10 +12,18 @@ using Sms.Models;
 
 namespace Sms.Views
 {
-    public partial class MainWindow : Form, Controllers.MainController.IWindow {
+    public partial class MainWindow : Form, MainController.IWindow {
 
         /* Var */
         public BindingSource dictionaryBindingSource;
+
+        public event EventHandler userTextChanged;
+        public event EventHandler dictionaryChanged;
+        public event EventHandler newDictionary;
+        public event EventHandler openDictionary;
+        public event EventHandler saveDictionary;
+        public event EventHandler saveAsDictionary;
+        public event EventHandler exitApplication;
 
         /* Ctor */
         public MainWindow()
@@ -67,37 +75,103 @@ namespace Sms.Views
         /* Event */
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            OnExitApplication(EventArgs.Empty);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Controller.SaveDictionary();
+            OnSaveDictionary(EventArgs.Empty);
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Controller.SaveAsDictionary();
+            OnSaveAsDictionary(EventArgs.Empty);
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Controller.OpenFile();
+            OnOpenDictionary(EventArgs.Empty);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Controller.NewDico();
+            OnNewDictionary(EventArgs.Empty);
         }
 
         private void UserTextBox_TextChanged(object sender, EventArgs e)
         {
-            Controller.RefreshParse();
+            OnUserTextChanged(EventArgs.Empty);
         }
 
         private void DictionaryDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            Controller.RefreshParse();
+            OnDictionaryChanged(EventArgs.Empty);
         }
+
+        /* Event handler */
+
+        protected virtual void OnUserTextChanged(EventArgs e)
+        {
+            EventHandler handler = userTextChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnDictionaryChanged(EventArgs e)
+        {
+            EventHandler handler = dictionaryChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnNewDictionary(EventArgs e)
+        {
+            EventHandler handler = newDictionary;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnOpenDictionary(EventArgs e)
+        {
+            EventHandler handler = openDictionary;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnSaveDictionary(EventArgs e)
+        {
+            EventHandler handler = saveDictionary;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnSaveAsDictionary(EventArgs e)
+        {
+            EventHandler handler = saveAsDictionary;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
+        protected virtual void OnExitApplication(EventArgs e)
+        {
+            EventHandler handler = exitApplication;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+
     }
 }
